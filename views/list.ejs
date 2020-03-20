@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>URL Shortener</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="container">
+			<h1 class="mb-3">🔗 URL Shortener</h1>
+			<h4 class="mb-5">URLs list</h4>
+			<table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th scope="col">Full URL</th>
+			      <th scope="col">Short URL</th>
+			      <th scope="col">Clicks</th>
+			      <th scope="col">Actions</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	<% urls.forEach(url => { %> 
+				  	<tr>
+				      <td><a href="<%= url.url %>"><%= url.url %></a></td>
+				      <td><a href="<%= '/' + url.shortURL %>"><%= '/' + url.shortURL %> </a></td>
+				      <td><%= url.clicks %></td>
+				      <td><form action="/api/delete/<%= url.shortURL %>?_method=DELETE" method="POST"><button type="submit" class="btn btn-danger">Delete</button></td>
+				    </tr>
+			  	<% }) %>
+			  </tbody>
+			</table>
+		</div>
+	</body>
+</html>

@@ -1,2 +1,2 @@
 # url-shortener
- A basic URL Shortener.
+A basic URL Shortener.
